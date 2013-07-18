@@ -1,0 +1,13 @@
+
+tests for libfortuna
+Waitman Gobble <ns@waitman.net> 
+
+2013-07-17 first test working, output 1024 random numbers.
+
+see Makefile in tests directory, links against static and shared libfortuna
+
+get libfortuna from https://github.com/waitman/libfortuna
+
+
+
+
