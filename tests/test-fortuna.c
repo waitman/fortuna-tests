@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <fortuna/px.h>
+#include <fortuna/internal.h>
 
 int
 main (int argc, char** argv) {
