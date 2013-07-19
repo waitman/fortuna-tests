@@ -8,6 +8,9 @@ see Makefile in tests directory, links against static and shared libfortuna
 
 get libfortuna from https://github.com/waitman/libfortuna
 
+rngtest-fortuna is built to test rngtest (debian)
+see https://github.com/waitman/rngtest 
+
 
 
 
