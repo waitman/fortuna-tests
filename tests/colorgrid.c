@@ -9,8 +9,8 @@
 int
 main (int argc, char** argv) {
 
-        uint8 rnd[(XSIZE*YSIZE)*3+1];
-        int i;
+        uint8 rnd[(XSIZE * YSIZE) * 3];
+        
 
 	/* fill array with random values */
         if (px_get_random_bytes(rnd, sizeof(rnd)) < 0) {
@@ -22,8 +22,8 @@ main (int argc, char** argv) {
 	PixelWand *p_wand = NULL;
 	PixelIterator *iterator = NULL;
 	PixelWand **pixels = NULL;
-	int y,red,green,blue;
-	size_t x;
+	int x, y,red,green,blue;
+	size_t width;
 	char hex[128];
 
 	MagickWandGenesis();
@@ -34,11 +34,12 @@ main (int argc, char** argv) {
 	MagickNewImage(m_wand,XSIZE,YSIZE,p_wand);
 	iterator=NewPixelIterator(m_wand);
 	for(y=0;y<YSIZE;y++) {
-		pixels=PixelGetNextIteratorRow(iterator,&x);
+		pixels=PixelGetNextIteratorRow(iterator,&width);
 		for(x=0;x<XSIZE;x++) {
-			red = rnd[x*y];
-			green = rnd[x*y*2];
-			blue = rnd[x*y*3];
+			int i = (y * XSIZE + x) * 3;
+			red   = rnd[i];
+			green = rnd[i + 1];
+			blue  = rnd[i + 2];
 			sprintf(hex,"#%02x%02x%02x",red,green,blue);
 			PixelSetColor(pixels[x],hex);
 		}
